@@ -8,7 +8,7 @@ export function loadInventory() {
          new DataTable('#inv_tbl', {
             initComplete: function () {
                   this.api()
-                     .columns([0, 1])
+                     .columns([1])
                      .every(function () {
                            let column = this;
             
@@ -93,6 +93,16 @@ export function loadDashboard() {
    });
 }
 
+export function loadPackMaker() {
+   $.ajax({
+      url: 'packmaker.php',
+      method: 'GET',
+      success: function(data) {
+         $('main').html(data);
+      }
+   });
+}
+
 $(document).ready(()=>{
    loadDashboard();
 
@@ -121,7 +131,7 @@ $(document).ready(()=>{
    $('#nav_makePackage').click(()=>{
       $('#nav_makePackage').addClass('active-nav');
 
-      // toPage('maker/index.php', 'main');
+      loadPackMaker();
 
       $('#nav_dashboard, #nav_inventory, #nav_settings, #nav_faq').removeClass('active-nav');
    });
