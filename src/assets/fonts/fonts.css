@@ -1,0 +1,13 @@
+@font-face {
+   font-family: Source Sans;
+   src: url('./sourcesans.ttf');
+}
+
+@font-face {
+   font-family: Questrial;
+   src: url('./questrial.ttf');
+}
+
+* {
+   font-family: Source Sans;
+}
