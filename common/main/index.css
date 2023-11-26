@@ -1,0 +1,13 @@
+* {
+   font-family: Source Sans;
+}
+
+.active-nav {
+   box-shadow: 5px 0px 0px 0px #F96D00 inset;
+   background-color: #d8d8d8;
+   color: #F96D00;
+}
+
+input {
+   background-color: transparent;
+}

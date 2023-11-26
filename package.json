@@ -1,0 +1,21 @@
+{
+  "name": "v03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss -i ./src/extensions/input.css -o ./src/extensions/output.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "daisyui": "^4.4.2",
+    "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "alpinejs": "^3.13.2",
+    "bootstrap-icons": "^1.11.1",
+    "echarts": "^5.4.3"
+  }
+}
