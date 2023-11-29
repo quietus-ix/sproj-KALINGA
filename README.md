@@ -1,7 +1,7 @@
 # KALINGA Web System
 just a school project for the compliance of grades and peace to our sanity. This is a Humanitarian Aid Web App or simply put: A Donation Management System, particularly for the use of organizations handling humanitarian aid distribution. Weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
-## How to use (for my classmates/schoolmates)
+## How to use
 - you need [Node.js](https://nodejs.org/en/) to use the TailwindCSS CLI build process
 - I use VS Code to run the command `npm run dev` in its built-in terminal.
 - Normally, you'd get an error about db_kalinga not being loaded. I use phpMyAdmin MySQL as my database interface so you might wanna import that in your phpMyAdmin. To do that:
