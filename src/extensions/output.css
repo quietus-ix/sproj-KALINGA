@@ -1569,6 +1569,10 @@ html {
   height: 100vh;
 }
 
+.tw-h-52 {
+  height: 13rem;
+}
+
 .tw-w-1\/2 {
   width: 50%;
 }
@@ -1615,10 +1619,6 @@ html {
 
 .tw-w-3\/5 {
   width: 60%;
-}
-
-.tw-w-32 {
-  width: 8rem;
 }
 
 .tw-w-4 {
@@ -1786,6 +1786,10 @@ html {
   gap: 1.25rem;
 }
 
+.tw-gap-2 {
+  gap: 0.5rem;
+}
+
 .tw-overflow-hidden {
   overflow: hidden;
 }
@@ -1939,8 +1943,16 @@ html {
   background-image: url('../../src/assets/img/bg.svg');
 }
 
+.tw-bg-\[url\(\'\.\.\/\.\.\/src\/img\/bg-login\.svg\'\)\] {
+  background-image: url('../../src/img/bg-login.svg');
+}
+
 .tw-bg-cover {
   background-size: cover;
+}
+
+.tw-bg-bottom {
+  background-position: bottom;
 }
 
 .tw-bg-no-repeat {

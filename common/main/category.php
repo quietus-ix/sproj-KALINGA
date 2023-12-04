@@ -146,16 +146,23 @@
 
 		<div id="inv_tab" class="tw-w-full tw-flex tw-items-center hover:tw-bg-gray-200 tw-rounded-lg tw-py-2 tw-px-3 tw-cursor-pointer tw-my-1">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="tw-w-4 tw-h-4 tw-me-2 tw-text-quatenary">
-				<path d="M50.7 58.5L0 160H208V32H93.7C75.5 32 58.9 42.3 50.7 58.5zM240 160H448L397.3 58.5C389.1 42.3 372.5 32 354.3 32H240V160zm208 32H0V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192z"/>
+				<path d="M288 0H160 128C110.3 0 96 14.3 96 32s14.3 32 32 32V196.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6C0 480.9 31.1 512 69.4 512H378.6c38.3 0 69.4-31.1 69.4-69.4c0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H288zM192 196.8V64h64V196.8c0 23.7 6.6 46.9 19 67.1L309.5 320h-171L173 263.9c12.4-20.2 19-43.4 19-67.1z"/>
 			</svg>
 			<a href="#" class="tw-capitalize tw-text-base tw-text-quatenary">items</a>
 		</div>
 
 		<div id="cat_tab" class="tw-w-full tw-flex tw-items-center tw-bg-secondary  tw-rounded-lg tw-py-2 tw-px-3 tw-cursor-pointer tw-my-1">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="tw-w-4 tw-h-4 tw-me-2 tw-text-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="tw-w-4 tw-h-4 tw-me-2 tw-text-primary tabflex">
 				<path d="M88.7 223.8L0 375.8V96C0 60.7 28.7 32 64 32H181.5c17 0 33.3 6.7 45.3 18.7l26.5 26.5c12 12 28.3 18.7 45.3 18.7H416c35.3 0 64 28.7 64 64v32H144c-22.8 0-43.8 12.1-55.3 31.8zm27.6 16.1C122.1 230 132.6 224 144 224H544c11.5 0 22 6.1 27.7 16.1s5.7 22.2-.1 32.1l-112 192C453.9 474 443.4 480 432 480H32c-11.5 0-22-6.1-27.7-16.1s-5.7-22.2 .1-32.1l112-192z"/>
 			</svg>
-			<a href="#" class="tw-capitalize tw-text-base tw-text-primary">category</a>
+			<a href="#" class="tw-capitalize tw-text-base tw-text-primary tabflex">category</a>
+		</div>
+
+		<div id="pack_tab" class="tw-w-full tw-flex tw-items-center hover:tw-bg-gray-200 tw-rounded-lg tw-py-2 tw-px-3 tw-cursor-pointer tw-my-1">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="tw-w-4 tw-h-4 tw-me-2 tw-text-quatenary">
+				<path d="M50.7 58.5L0 160H208V32H93.7C75.5 32 58.9 42.3 50.7 58.5zM240 160H448L397.3 58.5C389.1 42.3 372.5 32 354.3 32H240V160zm208 32H0V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192z"/>
+			</svg>
+			<a href="#" class="tw-capitalize tw-text-base tw-text-quatenary">packages</a>
 		</div>
 	</div>
 

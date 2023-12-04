@@ -106,13 +106,13 @@ export function loadPackMaker() {
 $(document).ready(()=>{
    loadDashboard();
 
-   function toPage(url, elem) {
-      fetch(url)
-         .then(response => response.text())
-         .then(data => {
-            $(elem).html(data);
-      });
-   }
+   // function toPage(url, elem) {
+   //    fetch(url)
+   //       .then(response => response.text())
+   //       .then(data => {
+   //          $(elem).html(data);
+   //    });
+   // }
 
    $('#nav_dashboard').click(()=>{
       $('#nav_dashboard').addClass('active-nav');
@@ -128,30 +128,18 @@ $(document).ready(()=>{
 
       $('#nav_dashboard, #nav_makePackage, #nav_settings, #nav_faq').removeClass('active-nav');
    });
-   $('#nav_makePackage').click(()=>{
-      $('#nav_makePackage').addClass('active-nav');
-
-      loadPackMaker();
-
-      $('#nav_dashboard, #nav_inventory, #nav_settings, #nav_faq').removeClass('active-nav');
-   });
    $('#nav_settings').click(()=>{
       $('#nav_settings').addClass('active-nav');
-
-      // toPage('settings/index.php', 'main');
 
       $('#nav_dashboard, #nav_inventory, #nav_makePackage, #nav_faq').removeClass('active-nav');
    });
    $('#nav_faq').click(()=>{
       $('#nav_faq').addClass('active-nav');
 
-      // toPage('faq/index.php', 'main');
-
       $('#nav_dashboard, #nav_inventory, #nav_makePackage, #nav_settings').removeClass('active-nav');
    });
 
    
-
    let navClicked = false;
    $('#navExpand').click(()=>{
       if(!navClicked) {
@@ -181,6 +169,9 @@ $(document).ready(()=>{
    });
    $('main').on('click', '#cat_tab', function(){
       loadCategory();
+   });
+   $('main').on('click', '#pack_tab', function(){
+      loadPackMaker();
    });
 
 });

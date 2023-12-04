@@ -331,9 +331,18 @@
       transform: translateX(0);
    }
 }
-   .alertShow {
-      animation: alertShow 0.3s ease 0s 1 normal forwards;
+.alertShow {
+   animation: alertShow 0.3s ease 0s 1 normal forwards;
+}
+
+@keyframes tabflex {
+   100% {
+      transform: translateX(8px);
    }
+}
+.tabflex {
+   animation: tabflex 0.3s ease 0s 1 normal forwards;
+}
 
 /* ======================================================================================= */
 /* anim classes */

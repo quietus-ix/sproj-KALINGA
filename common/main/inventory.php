@@ -147,10 +147,10 @@
 		<hr class="tw-border tw-border-gray-300 tw-my-3">
 
 		<div id="inv_tab" class="tw-w-full tw-flex tw-items-center tw-bg-secondary tw-rounded-lg tw-py-2 tw-px-3 tw-cursor-pointer tw-my-1">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="tw-w-4 tw-h-4 tw-me-2 tw-text-primary">
-				<path d="M50.7 58.5L0 160H208V32H93.7C75.5 32 58.9 42.3 50.7 58.5zM240 160H448L397.3 58.5C389.1 42.3 372.5 32 354.3 32H240V160zm208 32H0V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192z"/>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="tw-w-4 tw-h-4 tw-me-2 tw-text-primary tabflex">
+				<path d="M288 0H160 128C110.3 0 96 14.3 96 32s14.3 32 32 32V196.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6C0 480.9 31.1 512 69.4 512H378.6c38.3 0 69.4-31.1 69.4-69.4c0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H288zM192 196.8V64h64V196.8c0 23.7 6.6 46.9 19 67.1L309.5 320h-171L173 263.9c12.4-20.2 19-43.4 19-67.1z"/>
 			</svg>
-			<a href="#" class="tw-capitalize tw-text-base tw-text-primary">items</a>
+			<a href="#" class="tw-capitalize tw-text-base tw-text-primary tabflex">items</a>
 		</div>
 
 		<div id="cat_tab" class="tw-w-full tw-flex tw-items-center hover:tw-bg-gray-200 tw-rounded-lg tw-py-2 tw-px-3 tw-cursor-pointer tw-my-1">
@@ -158,6 +158,13 @@
 				<path d="M64 480H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H288c-10.1 0-19.6-4.7-25.6-12.8L243.2 57.6C231.1 41.5 212.1 32 192 32H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64z"/>
 			</svg>
 			<a href="#" class="tw-capitalize tw-text-base tw-text-quatenary">category</a>
+		</div>
+
+		<div id="pack_tab" class="tw-w-full tw-flex tw-items-center hover:tw-bg-gray-200 tw-rounded-lg tw-py-2 tw-px-3 tw-cursor-pointer tw-my-1">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="tw-w-4 tw-h-4 tw-me-2 tw-text-quatenary">
+				<path d="M50.7 58.5L0 160H208V32H93.7C75.5 32 58.9 42.3 50.7 58.5zM240 160H448L397.3 58.5C389.1 42.3 372.5 32 354.3 32H240V160zm208 32H0V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192z"/>
+			</svg>
+			<a href="#" class="tw-capitalize tw-text-base tw-text-quatenary">packages</a>
 		</div>
 	</div>
 
