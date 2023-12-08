@@ -1,0 +1,5 @@
+{
+     "require": {
+          "infobip/infobip-api-php-client": "^5.1"
+     }
+}
