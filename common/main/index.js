@@ -1,14 +1,14 @@
-export function loadInventory() {
+export function loadTableContent(target, src, table, column) {
    $.ajax({
-      url: './inventory.php',
+      url: src,
       method: 'GET',
       success: function(data) {
-         $('main').html(data);
+         $(target).html(data);
 
-         new DataTable('#inv_tbl', {
+         new DataTable(table, {
             initComplete: function () {
                   this.api()
-                     .columns([1])
+                     .columns(column)
                      .every(function () {
                            let column = this;
             
@@ -39,104 +39,44 @@ export function loadInventory() {
    });
 }
 
-export function loadCategory() {
+export function loadContent(target, src) {
    $.ajax({
-      url: './category.php',
+      url: src,
       method: 'GET',
       success: function(data) {
-         $('main').html(data);
-         // $('main #inv_tbl').DataTable();
-
-         new DataTable('#cat_tbl', {
-            initComplete: function () {
-                  this.api()
-                     .columns([2])
-                     .every(function () {
-                           let column = this;
-            
-                           // Create select element
-                           let select = document.createElement('select');
-                           select.add(new Option(''));
-                           column.footer().replaceChildren(select);
-            
-                           // Apply listener for user change in value
-                           select.addEventListener('change', function () {
-                              var val = DataTable.util.escapeRegex(select.value);
-            
-                              column
-                                 .search(val ? '^' + val + '$' : '', true, false)
-                                 .draw();
-                           });
-            
-                           // Add list of options
-                           column
-                              .data()
-                              .unique()
-                              .sort()
-                              .each(function (d, j) {
-                                 select.add(new Option(d));
-                              });
-                  });
-            }
-         });
-      }
-   });
-}
-
-export function loadDashboard() {
-   $.ajax({
-      url: 'dashboard.php',
-      method: 'GET',
-      success: function(data) {
-         $('main').html(data);
-      }
-   });
-}
-
-export function loadPackMaker() {
-   $.ajax({
-      url: 'packmaker.php',
-      method: 'GET',
-      success: function(data) {
-         $('main').html(data);
+         $(target).html(data);
       }
    });
 }
 
 $(document).ready(()=>{
-   loadDashboard();
-
-   // function toPage(url, elem) {
-   //    fetch(url)
-   //       .then(response => response.text())
-   //       .then(data => {
-   //          $(elem).html(data);
-   //    });
-   // }
+   loadContent('main', 'dashboard.php');
+   loadContent('main #report_content', 'dashboard_srInventory.php');
 
    $('#nav_dashboard').click(()=>{
+      $('.tabs div').removeClass('active-nav');
       $('#nav_dashboard').addClass('active-nav');
 
-      loadDashboard();
-
-      $('#nav_inventory, #nav_makePackage, #nav_settings, #nav_faq').removeClass('active-nav');
+      loadContent('main', 'dashboard.php');
+      loadContent('main #report_content', 'dashboard_srInventory.php');
    });
    $('#nav_inventory').click(()=>{
+      $('.tabs div').removeClass('active-nav');
       $('#nav_inventory').addClass('active-nav');
 
-      loadInventory();
-
-      $('#nav_dashboard, #nav_makePackage, #nav_settings, #nav_faq').removeClass('active-nav');
+      loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
    });
    $('#nav_settings').click(()=>{
+      $('.tabs div').removeClass('active-nav');
       $('#nav_settings').addClass('active-nav');
 
-      $('#nav_dashboard, #nav_inventory, #nav_makePackage, #nav_faq').removeClass('active-nav');
+      // TODO: content for this
    });
    $('#nav_faq').click(()=>{
+      $('.tabs div').removeClass('active-nav');
       $('#nav_faq').addClass('active-nav');
 
-      $('#nav_dashboard, #nav_inventory, #nav_makePackage, #nav_settings').removeClass('active-nav');
+      // TODO: content for this
    });
 
    
@@ -164,14 +104,15 @@ $(document).ready(()=>{
       }
    });
 
+   // tabs inside inventory
    $('main').on('click', '#inv_tab', function(){
-      loadInventory();
+      loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
    });
    $('main').on('click', '#cat_tab', function(){
-      loadCategory();
+      loadTableContent('main', 'category.php', '#cat_tbl', [2]);
    });
    $('main').on('click', '#pack_tab', function(){
-      loadPackMaker();
+      loadContent('main', 'packmaker.php');
    });
 
 });

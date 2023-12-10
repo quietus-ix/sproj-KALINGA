@@ -10,8 +10,8 @@ $(document).ready(function () {
     $(".logo-name").show(500);
 
     setTimeout(() => {
-      $("body").removeClass("tw-overflow-hidden");
-      $("body").addClass("tw-overflow-x-hidden");
+      $("body").removeClass("overflow-hidden");
+      $("body").addClass("overflow-x-hidden");
       $(".sisu-buttons").slideDown();
       $(".clutter").addClass("circles");
     }, 1100);

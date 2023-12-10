@@ -27,7 +27,6 @@ module.exports = {
   ],
   daisyui : {
     darkTheme: "light"
-  },
-  prefix: 'tw-'
+  }
 }
 

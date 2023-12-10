@@ -1,4 +1,4 @@
-import {loadCategory} from './index.js';
+import { loadTableContent } from './index.js';
 
 $(document).ready(function(){
      $('main').on('click', '#renameCat_btn', function() {
@@ -28,24 +28,24 @@ $(document).ready(function(){
 			dataType: "json",
 			success: function(e) {
 				if(e.code == 1) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 				else if(e.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 			}
 		});
@@ -80,24 +80,24 @@ $(document).ready(function(){
 			dataType: "json",
 			success: function(e) {
 				if(e.code == 1) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 				else if(e.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 			}
 		});
@@ -105,7 +105,7 @@ $(document).ready(function(){
 
 	$('main').on('click', '#delCategory_btn', function() {
 		let id = $(this).attr('data-ref');
-		$('main #delCat_modal').addClass('tw-modal-open');
+		$('main #delCat_modal').addClass('modal-open');
 		
 		$.ajax({
 			type: "POST",
@@ -117,7 +117,7 @@ $(document).ready(function(){
 				$('main #delCat_id').val(e.id);
 				$('main #delCat_target').html(e.name);
 				if(e.count > 1) {
-					$('main #delCat_count').html('There are <span class="tw-text-secondary tw-font-bold">'+e.count+'</span> items using this category.');
+					$('main #delCat_count').html('There are <span class="text-secondary font-bold">'+e.count+'</span> items using this category.');
 				}
 				else if(e.count == 1) {
 					$('main #delCat_count').html("There is one item using this category.");
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		});
 	});
 	$('main').on('click', '#delCat_btn_cancel', function() {
-		$('main #delCat_modal').removeClass('tw-modal-open');
+		$('main #delCat_modal').removeClass('modal-open');
 	});
 	$('main').on('submit', '#delCat_form', function(e) {
 		e.preventDefault();
@@ -144,24 +144,24 @@ $(document).ready(function(){
 			dataType: "json",
 			success: function(e) {
 				if(e.code == 2) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 				else if(e.code == 1) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 			}
 		});

@@ -1,5 +1,4 @@
-import {loadInventory} from './index.js';
-import { loadCategory } from './index.js';
+import { loadTableContent } from './index.js';
 
 $(document).ready(()=>{
 	$('main').on('change', '#trigger_category', ()=>{
@@ -23,33 +22,33 @@ $(document).ready(()=>{
 			dataType: "json",
 			success: function(response){
 				if(response.code == 1) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(response.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 				else if(response.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(response.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 
 					$.ajax({
 
 					});
 				}
 				else if(response.code == 3) {
-					$('main #addItem_modal_container').addClass('shakeH tw-ring-4 tw-ring-red-400');
+					$('main #addItem_modal_container').addClass('shakeH ring-4 ring-red-400');
 					setTimeout(()=>{
-						$('main #addItem_modal_container').removeClass('shakeH tw-ring-4 tw-ring-red-400');
+						$('main #addItem_modal_container').removeClass('shakeH ring-4 ring-red-400');
 					},1000);
 				}
 			}
@@ -68,29 +67,29 @@ $(document).ready(()=>{
 			dataType: "json",
 			success: function(response){
 				if(response.code == 1) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(response.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 				else if(response.code == 2) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(response.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadCategory();
+					loadTableContent('main', 'category.php', '#cat_tbl', [2]);
 				}
 				else if(response.code == 3) {
-					$('main #addCategory_modal_container').addClass('shakeH tw-ring-4 tw-ring-red-400');
+					$('main #addCategory_modal_container').addClass('shakeH ring-4 ring-red-400');
 					setTimeout(()=>{
-						$('main #addCategory_modal_container').removeClass('shakeH tw-ring-4 tw-ring-red-400');
+						$('main #addCategory_modal_container').removeClass('shakeH ring-4 ring-red-400');
 					},1000);
 				}
 			}
@@ -124,24 +123,24 @@ $(document).ready(()=>{
 			dataType: "json",
 			success: function(e) {
 				if(e.code == 1) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 				else if(e.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 			}
 		});
@@ -173,24 +172,24 @@ $(document).ready(()=>{
 			dataType: "json",
 			success: function(e) {
 				if(e.code == 1) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 				else if(e.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 			}
 		});
@@ -224,24 +223,24 @@ $(document).ready(()=>{
 			dataType: "json",
 			success: function(e) {
 				if(e.code == 1) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 				else if(e.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 			}
 		});
@@ -273,24 +272,24 @@ $(document).ready(()=>{
 			dataType: "json",
 			success: function(e) {
 				if(e.code == 1) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 				else if(e.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 			}
 		});
@@ -330,24 +329,24 @@ $(document).ready(()=>{
                processData: false,
 			success: function(e) {
 				if(e.code == 1) {
-					$('body #alert_warning').addClass('alertShow tw-flex');
-					$('body #alert_warning').removeClass('tw-hidden');
+					$('body #alert_warning').addClass('alertShow flex');
+					$('body #alert_warning').removeClass('hidden');
 					$('body #alert_warning_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_warning').removeClass('alertShow tw-flex');
-						$('body #alert_warning').addClass('tw-hidden');
+						$('body #alert_warning').removeClass('alertShow flex');
+						$('body #alert_warning').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 				else if(e.code == 2) {
-					$('body #alert_success').addClass('alertShow tw-flex');
-					$('body #alert_success').removeClass('tw-hidden');
+					$('body #alert_success').addClass('alertShow flex');
+					$('body #alert_success').removeClass('hidden');
 					$('body #alert_success_text').html(e.msg);
 					setTimeout(()=>{
-						$('body #alert_success').removeClass('alertShow tw-flex');
-						$('body #alert_success').addClass('tw-hidden');
+						$('body #alert_success').removeClass('alertShow flex');
+						$('body #alert_success').addClass('hidden');
 					},3000);
-					loadInventory();
+					loadTableContent('main', 'inventory.php', '#inv_tbl', [1]);
 				}
 			}
 		});
