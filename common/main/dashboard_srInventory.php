@@ -1,54 +1,67 @@
 <?php
      require_once '../php/dbh_inc.php';
 
-     // current month
-     $currentMonth = $conn->query(
+     $date  = (new DateTime())->format('Y-m-d');
+     
+     // current day
+     $currentDay = $conn->query(
           "SELECT * FROM tb_inventory AS a
           INNER JOIN tb_prtype AS b
                ON a.inv_prtype = b.ipt_id
-          WHERE inv_dateAdded = CURDATE()"
+          WHERE DAYOFMONTH(inv_dateModified) = DAYOFMONTH(CURDATE())"
      );
-     $current = $currentMonth->fetch_assoc();
+     $current = $currentDay->fetch_assoc();
 
-     // past month
-     $pastMonth = $conn->query(
+     // yesterday
+     $thisMonth = $conn->query(
           "SELECT * FROM tb_inventory AS a
           INNER JOIN tb_prtype AS b
                ON a.inv_prtype = b.ipt_id
-          WHERE inv_dateAdded != CURDATE()"
+          WHERE MONTH(inv_dateAdded) = MONTH(CURDATE())"
      );
-     $past = $pastMonth->fetch_assoc();
+     $presentMonth = $thisMonth->fetch_assoc();
 ?>
 
 <div class="flex flex-col mt-6">
-     <div class="divider divider-start text-xl mb-2">Current Month</div>
+     <div class="divider divider-start text-xl mb-2">Today</div>
 
      <table class="table overflow-auto">
           <thead>
                <tr">
                     <th class="w-6/12">Donation Item</th>
                     <th class="w-2/12">Metric</th>
-                    <th class="w-2/12">Added/Decreased this month</th>
+                    <th class="w-2/12">Added/Decreased this day</th>
                     <th class="w-2/12">Total</th>
                </tr>
           </thead>
           <tbody>
                <?php
-                    if($currentMonth->num_rows > 0) {
-                         foreach($currentMonth as $data) {
+                    if($currentDay->num_rows > 0) {
+                         foreach($currentDay as $data) {
                ?>
                <tr>
                     <td><?php echo $data['inv_product'] ?></td>
                     <td><?php echo $data['ipt_metric'].' ('.$data['ipt_metric'].')' ?></td>
-                    <?php 
-                         if($data['inv_denom'] > 0) {
-                              echo '<td class="text-green-500">+'.$data['inv_denom'].'</td>';
-                         } else if($data['inv_denom'] < 0) {
-                              echo '<td class="text-red-600">-'.$data['inv_denom'].'</td>';
-                         } else if ($data['inv_denom'] == 0) {
-                              echo '<td class="text-gray-600">0</td>';
-                         } 
-                    ?>
+                    <td>
+                         <span class="text-green-500 me-3">
+                              <?php
+                                   if($data['inv_denom'] > 0) {
+                                        echo '+'.$data['inv_denom'] ;
+                                   } else {
+                                        echo ' ';
+                                   }
+                              ?>
+                         </span>
+                         <span class="text-red-500">
+                              <?php 
+                                   if($data['inv_deduc'] < 0) {
+                                        echo $data['inv_deduc'];
+                                   } else {
+                                        echo ' ';
+                                   }
+                              ?>
+                         </span>
+                    </td>
                     <td><?php echo $data['inv_qty'] ?></td>
                </tr>
                <?php
@@ -60,7 +73,7 @@
           </tbody>
      </table>
 
-     <div class="divider divider-start text-xl mt-5 mb-2">Past Month</div>
+     <div class="divider divider-start text-xl mt-5 mb-2">This Month</div>
 
      <table class="table overflow-auto">
           <thead>
@@ -73,21 +86,32 @@
           </thead>
           <tbody>
                <?php
-                    if($pastMonth->num_rows > 0) {
-                         foreach($pastMonth as $data) {
+                    if($thisMonth->num_rows > 0) {
+                         foreach($thisMonth as $data) {
                ?>
                <tr>
                     <td><?php echo $data['inv_product'] ?></td>
                     <td><?php echo $data['ipt_metric'].' ('.$data['ipt_metric'].')' ?></td>
-                    <?php 
-                         if($data['inv_denom'] > 0) {
-                              echo '<td class="text-green-500">+'.$data['inv_denom'].'</td>';
-                         } else if($data['inv_denom'] < 0) {
-                              echo '<td class="text-red-600">-'.$data['inv_denom'].'</td>';
-                         } else if ($data['inv_denom'] == 0) {
-                              echo '<td class="text-gray-600">0</td>';
-                         } 
-                    ?>
+                    <td>
+                         <span class="text-green-500 me-3">
+                              <?php
+                                   if($data['inv_denom'] > 0) {
+                                        echo '+'.$data['inv_denom'] ;
+                                   } else {
+                                        echo ' ';
+                                   }
+                              ?>
+                         </span>
+                         <span class="text-red-500">
+                              <?php 
+                                   if($data['inv_deduc'] < 0) {
+                                        echo $data['inv_deduc'];
+                                   } else {
+                                        echo ' ';
+                                   }
+                              ?>
+                         </span>
+                    </td>
                     <td><?php echo $data['inv_qty'] ?></td>
                </tr>
                <?php

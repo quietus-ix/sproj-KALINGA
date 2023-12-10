@@ -349,7 +349,7 @@
 
 				<div>
 					<label id="qty_label" for="qty_amount" class="block text-sm text-tertiary">placeholder</label>
-					<input id="qty_amount" type="number" class="block mt-2 w-full placeholder-gray-400/70 border-b-2 border-quatenary bg-transparent px-5 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none" />
+					<input id="qty_amount" min="1" type="number" class="block mt-2 w-full placeholder-gray-400/70 border-b-2 border-quatenary bg-transparent px-5 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none" />
 				</div>
 
 				<div class="flex items-center gap-4 mt-3">
@@ -404,7 +404,7 @@
 			</form>
 			<h3 class="font-[Questrial] text-lg">Modify donation item</h3>
 			<hr class="border border-gray-200 my-2">
-			<form id="changeAll_form" class="form-control w-full max-w-xs mt-5 gap-5">							            
+			<form id="changeAll_form" class="form-control w-full mt-5 gap-5">							            
 
 				<div>
 					<label for="changeAll_name" class="block text-sm text-tertiary">Item name</label>

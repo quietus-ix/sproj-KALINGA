@@ -65,6 +65,25 @@
           else if(isset($_POST['qty'])) {
                $qty = $_POST['qty'];
 
+               $query = $conn->query(
+                    "SELECT inv_qty, inv_denom, inv_deduc FROM tb_inventory
+                    WHERE inv_id = '$id'"
+               );
+               $getQty = $query->fetch_assoc();
+               
+               $denom = $qty - $getQty['inv_qty'];
+
+               if($getQty['inv_qty'] < $qty) {
+                    $denomDeduc = $getQty['inv_deduc'];
+                    $denomAdd = $getQty['inv_denom'] + $denom;
+               } else if($getQty['inv_qty'] > $qty) {
+                    $denomDeduc = $getQty['inv_deduc'] + $denom;
+                    $denomAdd = $getQty['inv_denom'];
+               } else if($getQty['inv_qty'] == 0) {
+                    $denom = $qty;
+                    $denomAdd = $getQty['inv_denom'] + $denom;
+               }
+
                if($row['inv_qty'] == $qty) {
                     echo json_encode(array(
                          "code"=>1,
@@ -72,7 +91,14 @@
                     ));
                }
                else {
-                    $query = $conn->query("UPDATE tb_inventory SET inv_qty = '$qty' WHERE inv_id = '$id'");
+                    $query = $conn->query(
+                         "UPDATE tb_inventory 
+                         SET inv_denom = '$denomAdd',
+                              inv_deduc = '$denomDeduc', 
+                              inv_qty = '$qty', 
+                              inv_dateModified = CURDATE() 
+                              WHERE inv_id = '$id'"
+                    );
 
                     echo json_encode(array(
                          "code"=>2,
@@ -113,7 +139,35 @@
                     ));
                }
                else {
-                    $query = $conn->query("UPDATE tb_inventory SET inv_product = '$name', inv_prtype = '$cat', inv_qty = '$qty', inv_note = '$note' WHERE inv_id = '$id'");
+                    $query = $conn->query(
+                         "SELECT inv_qty, inv_denom, inv_deduc FROM tb_inventory
+                         WHERE inv_id = '$id'"
+                    );
+                    $getQty = $query->fetch_assoc();
+                    
+                    $denom = $qty - $getQty['inv_qty'];
+     
+                    if($getQty['inv_qty'] < $qty) {
+                         $denomDeduc = $getQty['inv_deduc'];
+                         $denomAdd = $getQty['inv_denom'] + $denom;
+                    } else if($getQty['inv_qty'] > $qty) {
+                         $denomDeduc = $getQty['inv_deduc'] + $denom;
+                         $denomAdd = $getQty['inv_denom'];
+                    } else if($getQty['inv_qty'] == 0) {
+                         $denom = $qty;
+                         $denomAdd = $getQty['inv_denom'] + $denom;
+                    }
+                    $query = $conn->query(
+                         "UPDATE tb_inventory SET 
+                              inv_product = '$name', 
+                              inv_prtype = '$cat', 
+                              inv_denom = '$denomAdd', 
+                              inv_deduc = '$denomDeduc', 
+                              inv_qty = '$qty', 
+                              inv_note = '$note',
+                              inv_dateModified = CURDATE() 
+                         WHERE inv_id = '$id'"
+                    );
 
                     echo json_encode(array(
                          "code"=>2,

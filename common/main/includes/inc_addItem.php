@@ -6,8 +6,6 @@
      $itc = $_POST['addItem_category'];
      $itq = $_POST['addItem_qty'];
      $itnn = $_POST['addItem_note'];
-     session_start();
-     $denom;
 
      require_once './functions.php';
 
@@ -27,22 +25,31 @@
 
      if(mysqli_num_rows($query)>0) {
           $dup = $query->fetch_array();
-          $checkQTY = $dup['inv_qty'];
-     
-          $itq+=$checkQTY;
+          $query = $conn->query(
+               "SELECT inv_qty, inv_denom, inv_deduc FROM tb_inventory
+               WHERE inv_id = '$id'"
+          );
+          $getQty = $query->fetch_assoc();
+          
+          $denom = $qty - $getQty['inv_qty'];
 
-          $denom = $itq - $checkQTY;
-          if(!empty($_SESSION['denom'])) {
-               $_SESSION['denom']+=$denom;
-          } else {
-               $_SESSION['denom'] = $dup['inv_denom'] + $denom;
+          if($getQty['inv_qty'] < $qty) {
+               $denomDeduc = $getQty['inv_deduc'];
+               $denomAdd = $getQty['inv_denom'] + $denom;
+          } else if($getQty['inv_qty'] > $qty) {
+               $denomDeduc = $getQty['inv_deduc'] + $denom;
+               $denomAdd = $getQty['inv_denom'];
+          } else if($getQty['inv_qty'] == 0) {
+               $denom = $qty;
+               $denomAdd = $getQty['inv_denom'] + $denom;
           }
 
           $query = $conn->query(
                "UPDATE tb_inventory 
-               SET inv_denom = '{$_SESSION["denom"]}', 
+               SET inv_denom = '$denomAdd', 
+                    inv_deduc = '$denomDeduc', 
                     inv_qty = '$itq', 
-                    inv_dateAdded = CURDATE() 
+                    inv_dateModified = CURDATE() 
                WHERE inv_product = '$itn'"
           );
 
@@ -60,13 +67,15 @@
                     inv_denom, 
                     inv_qty, 
                     inv_note, 
-                    inv_dateAdded
+                    inv_dateAdded,
+                    inv_dateModified
                     ) VALUES(
                          '$itn', 
                          '$itc', 
                          '$denom', 
                          '$itq', 
                          '$itnn', 
+                         CURDATE(),
                          CURDATE()
                     )"
           );
