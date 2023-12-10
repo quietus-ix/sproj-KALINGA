@@ -86,7 +86,7 @@
                                    </svg>
                                    <h3 class="text-tertiary text-xl group-hover/card1:text-gray-500">Donation items</h3>
                               </div>
-                              <div class="px-5 text-3xl font-bold text-quatenary flex justify-end">
+                              <div class="px-5 text-xl font-bold text-quatenary flex justify-end">
                               <?php
                                    $q = $conn->query("SELECT COUNT(*) FROM tb_inventory WHERE inv_qty != 0");
                                    $c = $q->fetch_column();
@@ -107,7 +107,7 @@
                                    </svg>
                                    <h3 class="text-gray-400 text-xl group-hover/card2:text-gray-500">Donation packages</h3>
                               </div>
-                              <div class="px-5 text-3xl font-bold text-quatenary flex justify-end">
+                              <div class="px-5 text-xl font-bold text-quatenary flex justify-end">
                               <?php
                                    $q = $conn->query("SELECT COUNT(*) FROM tb_packages");
                                    $c = $q->fetch_column();
@@ -128,7 +128,7 @@
                                    </svg>
                                    <h3 class="text-gray-400 text-xl group-hover/card3:text-gray-500">Featured category</h3>
                               </div>
-                              <div class="px-5 text-3xl font-bold text-quatenary flex justify-end">
+                              <div class="px-5 text-xl font-bold text-quatenary flex justify-end">
                               <?php
                                    $q = $conn->query(
                                         "SELECT tb_prtype.ipt_type,
@@ -142,10 +142,9 @@
                                    ");
                                    
                                    $g = $q->fetch_assoc();
-                                   $c = $q->fetch_column();
                                    
-                                   if($c > 0) {
-                                        echo $c['ipt_type'] . ' (' . $c['count'] . ')';
+                                   if($g > 0) {
+                                        echo $g['ipt_type'] . ' (' . $g['count'] . ')';
                                    } else {
                                         echo 'none';
                                    }
@@ -169,8 +168,8 @@
      <!-- end -->
 
      <!-- another container -->
-          <div class="w-full h-1/3 flex mt-4 bg-primary rounded-lg shadow-lg">
-               
+          <div class="w-full h-1/3 flex mt-4 bg-primary rounded-lg shadow-lg justify-center items-center text-3xl">
+               description nadi ka system tani pro dason nalang danay kay i have bigger problems to code
           </div>
      <!-- end -->
 
