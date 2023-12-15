@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 15, 2023 at 04:36 PM
+-- Generation Time: Dec 15, 2023 at 04:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_kalinga`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_contributors`
+--
+
+CREATE TABLE `tb_contributors` (
+  `con_id` int(11) NOT NULL,
+  `con_fullname` varchar(128) NOT NULL,
+  `con_donDate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -147,6 +159,12 @@ INSERT INTO `tb_user` (`usr_id`, `user_type`, `usr_username`, `usr_password`, `u
 --
 
 --
+-- Indexes for table `tb_contributors`
+--
+ALTER TABLE `tb_contributors`
+  ADD PRIMARY KEY (`con_id`);
+
+--
 -- Indexes for table `tb_inventory`
 --
 ALTER TABLE `tb_inventory`
@@ -192,6 +210,12 @@ ALTER TABLE `tb_user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tb_contributors`
+--
+ALTER TABLE `tb_contributors`
+  MODIFY `con_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_inventory`
