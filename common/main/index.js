@@ -51,7 +51,6 @@ export function loadContent(target, src) {
 
 $(document).ready(()=>{
    loadContent('main', 'dashboard.php');
-   loadContent('main #report_content', 'dashboard_srInventory.php');
 
    $('#nav_dashboard').click(()=>{
       $('.tabs div').removeClass('active-nav');
@@ -114,5 +113,7 @@ $(document).ready(()=>{
    $('main').on('click', '#pack_tab', function(){
       loadContent('main', 'packmaker.php');
    });
+
+   loadContent('main #report_content', 'dashboard_srInventory.php');
 
 });

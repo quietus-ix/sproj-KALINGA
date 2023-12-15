@@ -2,8 +2,6 @@ import { loadTableContent } from "./index.js";
 import { loadContent } from "./index.js";
 
 $(document).ready(function(){
-     
-     loadContent('main #report_content', 'dashboard_srInventory.php');
 
      $('main').on('click', '#start_inv', function(){
           $('#nav_inventory').addClass('active-nav');

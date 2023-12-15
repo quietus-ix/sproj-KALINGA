@@ -186,7 +186,7 @@
                </div>
 
                <div id="report_content" class="w-full h-max">
-                    <!-- where summary content appears -->
+                    <?php  include './dashboard_srInventory.php' ?>
                </div>
                
                <!-- <div class="divider divider-start text-xl">Inventory</div> -->

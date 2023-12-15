@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 27, 2023 at 01:42 PM
+-- Generation Time: Dec 15, 2023 at 03:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,16 +32,19 @@ CREATE TABLE `tb_inventory` (
   `inv_product` varchar(255) NOT NULL,
   `inv_prtype` varchar(5) DEFAULT NULL,
   `inv_note` text DEFAULT NULL,
-  `inv_qty` int(6) NOT NULL
+  `inv_denom` int(6) NOT NULL,
+  `inv_deduc` int(6) NOT NULL,
+  `inv_qty` int(6) NOT NULL,
+  `inv_dateAdded` date NOT NULL,
+  `inv_dateModified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_inventory`
 --
 
-INSERT INTO `tb_inventory` (`inv_id`, `inv_product`, `inv_prtype`, `inv_note`, `inv_qty`) VALUES
-(18, 'FLAKES', 'PT767', 'wao', 3),
-(19, 'BUGAS', 'PT683', 'this is a note', 3);
+INSERT INTO `tb_inventory` (`inv_id`, `inv_product`, `inv_prtype`, `inv_note`, `inv_denom`, `inv_deduc`, `inv_qty`, `inv_dateAdded`, `inv_dateModified`) VALUES
+(29, 'ALCOHOL', 'PT529', '', 5, -1, 4, '2023-12-11', '2023-12-11');
 
 -- --------------------------------------------------------
 
@@ -50,16 +53,11 @@ INSERT INTO `tb_inventory` (`inv_id`, `inv_product`, `inv_prtype`, `inv_note`, `
 --
 
 CREATE TABLE `tb_notification` (
-  `ntf_content` text NOT NULL
+  `ntf_id` int(11) NOT NULL,
+  `ntf_content` text NOT NULL COMMENT 'content text of this notification',
+  `ntf_refID` int(11) NOT NULL COMMENT 'the content ID which the notification will refer',
+  `ntf_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'time when the notification is generated'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_notification`
---
-
-INSERT INTO `tb_notification` (`ntf_content`) VALUES
-('a'),
-('aa');
 
 -- --------------------------------------------------------
 
@@ -92,8 +90,7 @@ CREATE TABLE `tb_prtype` (
 
 INSERT INTO `tb_prtype` (`ipt_id`, `ipt_type`, `ipt_metric`, `ipt_metricAbbv`) VALUES
 ('null', 'unset', NULL, NULL),
-('PT683', 'rice', 'kilogram', 'kg'),
-('PT767', 'canned good', 'pieces', 'pcs');
+('PT529', 'hygiene', 'pieces', 'pcs');
 
 -- --------------------------------------------------------
 
@@ -116,6 +113,7 @@ CREATE TABLE `tb_residents` (
 
 CREATE TABLE `tb_user` (
   `usr_id` int(11) NOT NULL,
+  `user_type` int(11) NOT NULL COMMENT 'superadmin = 0\r\nadmin = 1',
   `usr_username` varchar(128) NOT NULL,
   `usr_password` varchar(128) NOT NULL,
   `usr_fname` varchar(255) NOT NULL,
@@ -129,11 +127,8 @@ CREATE TABLE `tb_user` (
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`usr_id`, `usr_username`, `usr_password`, `usr_fname`, `usr_lname`, `usr_email`, `usr_contactNum`, `usr_dateCreated`) VALUES
-(17, 'user2', '$2y$10$yEGoqqNpLkT/oy5eWEgZae47qc0wvpLTAwpnLVjC.4sSabm7xfLIO', 'aa', 'aa', 'a@gmail.com', '', '2023-11-06 02:54:02'),
-(18, 'user3', '$2y$10$rHc4/V1b0PBkWUlI0aNHcO1LAsci5wsw4bcHNxmGV5hjKH4edM8ka', 'user', 'three', 'user3@a.com', '', '2023-11-06 04:12:55'),
-(19, 'user4', '$2y$10$nU/AYytQrZ88Co32xqO/V.LqC.RP98zr7hWR.S7r80FawoYCf0UXq', 'user', 'four', 'a@a.com', '', '2023-11-06 06:19:25'),
-(20, 'usermarie', '$2y$10$SuSqYx3dSzLVpObdFluzduCXn.XSBwMOPNB0etobsMa.x95F1edDi', 'Marie', 'Juana', 'user@user.com', '', '2023-11-09 07:12:10');
+INSERT INTO `tb_user` (`usr_id`, `user_type`, `usr_username`, `usr_password`, `usr_fname`, `usr_lname`, `usr_email`, `usr_contactNum`, `usr_dateCreated`) VALUES
+(17, 0, 'user2', '$2y$10$yEGoqqNpLkT/oy5eWEgZae47qc0wvpLTAwpnLVjC.4sSabm7xfLIO', 'aa', 'aa', 'a@gmail.com', '', '2023-11-06 02:54:02');
 
 --
 -- Indexes for dumped tables
@@ -145,6 +140,12 @@ INSERT INTO `tb_user` (`usr_id`, `usr_username`, `usr_password`, `usr_fname`, `u
 ALTER TABLE `tb_inventory`
   ADD PRIMARY KEY (`inv_id`),
   ADD KEY `FK_product_type` (`inv_prtype`);
+
+--
+-- Indexes for table `tb_notification`
+--
+ALTER TABLE `tb_notification`
+  ADD PRIMARY KEY (`ntf_id`);
 
 --
 -- Indexes for table `tb_packages`
@@ -178,7 +179,13 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_inventory`
 --
 ALTER TABLE `tb_inventory`
-  MODIFY `inv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `inv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tb_notification`
+--
+ALTER TABLE `tb_notification`
+  MODIFY `ntf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_residents`
@@ -190,7 +197,7 @@ ALTER TABLE `tb_residents`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
