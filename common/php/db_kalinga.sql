@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 15, 2023 at 03:55 PM
+-- Generation Time: Dec 15, 2023 at 04:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -95,6 +95,18 @@ INSERT INTO `tb_prtype` (`ipt_id`, `ipt_type`, `ipt_metric`, `ipt_metricAbbv`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_reports`
+--
+
+CREATE TABLE `tb_reports` (
+  `rep_id` int(11) NOT NULL,
+  `rep_file` text NOT NULL,
+  `rep_genDate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_residents`
 --
 
@@ -160,6 +172,12 @@ ALTER TABLE `tb_prtype`
   ADD PRIMARY KEY (`ipt_id`);
 
 --
+-- Indexes for table `tb_reports`
+--
+ALTER TABLE `tb_reports`
+  ADD PRIMARY KEY (`rep_id`);
+
+--
 -- Indexes for table `tb_residents`
 --
 ALTER TABLE `tb_residents`
@@ -186,6 +204,12 @@ ALTER TABLE `tb_inventory`
 --
 ALTER TABLE `tb_notification`
   MODIFY `ntf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_reports`
+--
+ALTER TABLE `tb_reports`
+  MODIFY `rep_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_residents`
