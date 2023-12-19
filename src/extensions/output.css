@@ -2774,6 +2774,11 @@ html {
   border-inline-end-width: 2px;
 }
 
+.border-err {
+  --tw-border-opacity: 1;
+  border-color: rgb(176 0 32 / var(--tw-border-opacity));
+}
+
 .border-gray-100 {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
@@ -2804,6 +2809,11 @@ html {
   border-color: rgb(57 62 70 / var(--tw-border-opacity));
 }
 
+.border-secondary {
+  --tw-border-opacity: 1;
+  border-color: rgb(249 109 0 / var(--tw-border-opacity));
+}
+
 .border-tertiary {
   --tw-border-opacity: 1;
   border-color: rgb(92 99 110 / var(--tw-border-opacity));
@@ -2811,6 +2821,11 @@ html {
 
 .border-transparent {
   border-color: transparent;
+}
+
+.border-wrng {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 165 0 / var(--tw-border-opacity));
 }
 
 .bg-emerald-500 {
@@ -2855,6 +2870,11 @@ html {
 .bg-wrng {
   --tw-bg-opacity: 1;
   background-color: rgb(255 165 0 / var(--tw-bg-opacity));
+}
+
+.bg-err {
+  --tw-bg-opacity: 1;
+  background-color: rgb(176 0 32 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\'\.\.\/\.\.\/src\/assets\/img\/bg-login\.svg\'\)\] {

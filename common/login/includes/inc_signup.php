@@ -50,14 +50,57 @@
       ));
       exit();
    }
+
+   // checks for duplicate username
+   $dupUn = $conn->prepare(
+      "SELECT * FROM tb_user WHERE usr_username = ?"
+   );
+   $dupUn->bind_param('s', $un);
+   $dupUn->execute();
+   $dupUn->store_result();
+   if($dupUn->num_rows() > 0) {
+      echo json_encode(array(
+         "statusCode"=>400,
+         "type"=>1,
+         "message"=>"username already exist"
+      ));
+      exit();
+   }
+   // checks for duplicate email
+   $dupEm = $conn->prepare(
+      "SELECT * FROM tb_user WHERE usr_email = ?"
+   );
+   $dupEm->bind_param('s', $em);
+   $dupEm->execute();
+   $dupEm->store_result();
+   if($dupEm->num_rows() > 0) {
+      echo json_encode(array(
+         "statusCode"=>400,
+         "type"=>1,
+         "message"=>"email already exist"
+      ));
+      exit();
+   }
+
    $currentDateTime = date('Y-m-d H:i:s');
    $pHashed = password_hash($pw, PASSWORD_BCRYPT);
-   $sql = mysqli_query(
-      $conn, 
-      "INSERT INTO tb_user(usr_username, usr_password, usr_fname, usr_lname, usr_email, usr_dateCreated) 
-      VALUES ('$un', '$pHashed', '$fn', '$ln', '$em', '$currentDateTime')");
+   $utype = 1;
+
+   $sql = $conn->prepare(
+      "INSERT INTO tb_user(
+         usr_type,
+         usr_username,
+         usr_password, 
+         usr_fname, 
+         usr_lname, 
+         usr_email, 
+         usr_dateCreated
+      ) 
+      VALUES (?, ?, ?, ?, ?, ?, ?)"
+   );
+   $sql->bind_param("issssss", $utype, $un, $pHashed, $fn, $ln, $em, $currentDateTime);
    
-   if($sql) {
+   if($sql->execute()) {
       session_start();
 
       $sel = mysqli_query($conn, "SELECT * FROM tb_user WHERE usr_username = '$un'");
@@ -65,7 +108,7 @@
       $startSession = mysqli_fetch_array($sel);
       $_SESSION['sessionID'] = $startSession['usr_id'];
       $_SESSION['userfname'] = $startSession['usr_fname'];
-      // $_SESSION['sessionAuth'] = $startSession['usr_type'];
+      $_SESSION['sessionAuth'] = $startSession['usr_type'];
 
       echo json_encode(array(
          "statusCode"=>200,

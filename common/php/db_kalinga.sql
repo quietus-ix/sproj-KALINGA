@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 17, 2023 at 04:24 PM
+-- Generation Time: Dec 19, 2023 at 06:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -137,7 +137,7 @@ CREATE TABLE `tb_residents` (
 
 CREATE TABLE `tb_user` (
   `usr_id` int(11) NOT NULL,
-  `user_type` int(11) NOT NULL COMMENT 'superadmin = 0\r\nadmin = 1',
+  `usr_type` int(11) NOT NULL COMMENT 'admin = 0\r\nuser = 1',
   `usr_username` varchar(128) NOT NULL,
   `usr_password` varchar(128) NOT NULL,
   `usr_fname` varchar(255) NOT NULL,
@@ -151,8 +151,9 @@ CREATE TABLE `tb_user` (
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`usr_id`, `user_type`, `usr_username`, `usr_password`, `usr_fname`, `usr_lname`, `usr_email`, `usr_contactNum`, `usr_dateCreated`) VALUES
-(17, 0, 'user2', '$2y$10$yEGoqqNpLkT/oy5eWEgZae47qc0wvpLTAwpnLVjC.4sSabm7xfLIO', 'aa', 'aa', 'a@gmail.com', '', '2023-11-06 02:54:02');
+INSERT INTO `tb_user` (`usr_id`, `usr_type`, `usr_username`, `usr_password`, `usr_fname`, `usr_lname`, `usr_email`, `usr_contactNum`, `usr_dateCreated`) VALUES
+(17, 0, 'user2', '$2y$10$yEGoqqNpLkT/oy5eWEgZae47qc0wvpLTAwpnLVjC.4sSabm7xfLIO', 'aa', 'aa', 'a@gmail.com', '', '2023-11-06 02:54:02'),
+(23, 1, 'user3', '$2y$10$zgTLLyWvUusUXDkWO67tyO/YocE6cfXlTkpBJV9WC.5SNGMdhYcgS', 'ww', 'ww', 'a@a.com', '', '2023-12-19 18:14:28');
 
 --
 -- Indexes for dumped tables
@@ -245,7 +246,7 @@ ALTER TABLE `tb_residents`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
