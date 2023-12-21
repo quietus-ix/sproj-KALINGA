@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./common/**/*.{html,js,php}",
     "./common/**/**/*.{html,js,php}",
-    "./common/**/**/**/.{html,js,php}",
+    "./common/**/**/**/.{html,js,php}"
   ],
   theme: {
     extend: {
@@ -18,12 +18,15 @@ module.exports = {
         scs: "#008000",
         scsbg: "#adff2f",
         wrng: "#FFA500",
-        wrngbg: "#ffcc6e",
-      },
+        wrngbg: "#ffcc6e"
+      }
     },
   },
-  plugins: [require("daisyui")],
-  daisyui: {
-    darkTheme: "light",
-  },
-};
+  plugins: [
+    require("daisyui"),
+  ],
+  daisyui : {
+    darkTheme: "light"
+  }
+}
+
