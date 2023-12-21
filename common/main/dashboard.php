@@ -109,7 +109,7 @@
                               </div>
                               <div class="px-5 text-xl font-bold text-quatenary flex justify-end">
                               <?php
-                                   $q = $conn->query("SELECT COUNT(*) FROM tb_packages");
+                                   $q = $conn->query("SELECT COUNT(*) FROM tb_bundles");
                                    $c = $q->fetch_column();
 
                                    if($c > 0) {

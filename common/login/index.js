@@ -15,10 +15,10 @@ $(document).ready(()=>{
    setTimeout(()=>{ 
       $('.c2').removeClass('entrance');
       $('.si-header, .logo-flair, #signin').removeClass('entranceAlt');
-      $('#switch').removeAttr('disabled');
+      $('.switch').removeAttr('disabled');
    },1300);
 
-   $('#switch').click(()=>{
+   $('.switch').click(()=>{
 
       if(!clicked) {
 
@@ -49,7 +49,7 @@ $(document).ready(()=>{
             $('.su-header, #signup').css('opacity', '1');
             $('#signup, .su-header').removeClass('fadeInLeft');
 
-            $('#switch').html("sign in");
+            $('.switch').html("sign in");
          },600);
 
          clicked = true;
@@ -84,7 +84,7 @@ $(document).ready(()=>{
             $('.su-header, #signup').css('opacity', '0');
             $('#signup, .su-header').removeClass('fadeOut');            
 
-            $('#switch').html("sign up");
+            $('.switch').html("sign up");
          },600);
 
          clicked = false;
