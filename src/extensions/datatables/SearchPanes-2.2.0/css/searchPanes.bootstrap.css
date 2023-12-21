@@ -189,14 +189,30 @@ div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody thead {
 div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody table {
   table-layout: fixed;
 }
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody table tr > th,
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody table tr > td {
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  table
+  tr
+  > th,
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  table
+  tr
+  > td {
   padding: 5px 10px;
 }
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody td.dtsp-nameColumn {
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  td.dtsp-nameColumn {
   width: 100% !important;
 }
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont {
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  div.dtsp-nameCont {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -204,11 +220,23 @@ div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-na
   align-content: flex-start;
   align-items: flex-start;
 }
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name,
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-pill {
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  div.dtsp-nameCont
+  span.dtsp-name,
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  div.dtsp-nameCont
+  span.dtsp-pill {
   cursor: default;
 }
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name {
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  div.dtsp-nameCont
+  span.dtsp-name {
   text-overflow: ellipsis;
   overflow: hidden;
   display: inline-block;
@@ -217,7 +245,11 @@ div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-na
   flex-grow: 1;
   text-align: left;
 }
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-pill {
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  div.dtsp-nameCont
+  span.dtsp-pill {
   display: inline-block;
   background-color: #cfcfcf;
   text-align: center;
@@ -228,7 +260,11 @@ div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-na
   font-size: 0.9em;
   padding: 0 4px;
 }
-div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-pill:empty {
+div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_scrollBody
+  div.dtsp-nameCont
+  span.dtsp-pill:empty {
   display: none;
 }
 
@@ -254,11 +290,18 @@ div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane {
   font-size: 0.9em;
   margin-top: 15px !important;
 }
-div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane div.dataTables_wrapper {
+div.dtsp-panesContainer
+  div.dtsp-searchPanes
+  div.dtsp-searchPane
+  div.dataTables_wrapper {
   flex: 1;
   box-sizing: border-box;
 }
-div.dtsp-panesContainer div.dtsp-searchPanes div.dtsp-searchPane div.dataTables_wrapper div.dataTables_filter {
+div.dtsp-panesContainer
+  div.dtsp-searchPanes
+  div.dtsp-searchPane
+  div.dataTables_wrapper
+  div.dataTables_filter {
   display: none;
 }
 div.dtsp-panesContainer div.dtsp-title {
@@ -298,7 +341,10 @@ div.dtsp-searchPane div.dtsp-topRow div.dtsp-searchCont input.dtsp-search {
   padding-top: 0px;
   padding-bottom: 0px;
 }
-div.dtsp-searchPane div.dtsp-topRow div.dtsp-searchCont input.dtsp-paneInputButton {
+div.dtsp-searchPane
+  div.dtsp-topRow
+  div.dtsp-searchCont
+  input.dtsp-paneInputButton {
   padding-top: 0px;
   padding-bottom: 0px;
 }
@@ -325,7 +371,9 @@ div.dtsp-searchPane div.dtsp-topRow.dtsp-bordered:hover button.disabled {
   cursor: pointer !important;
   pointer-events: none;
 }
-div.dtsp-searchPane div.dtsp-topRow.dtsp-bordered:hover input.dtsp-paneInputButton {
+div.dtsp-searchPane
+  div.dtsp-topRow.dtsp-bordered:hover
+  input.dtsp-paneInputButton {
   pointer-events: none;
 }
 div.dtsp-searchPane div.dataTables_wrapper {

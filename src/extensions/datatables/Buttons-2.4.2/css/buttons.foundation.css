@@ -127,7 +127,9 @@ div.dt-button-collection .dt-button-active.dt-button-split:after {
 div.dt-button-collection .dt-button-active.dt-button-split > *:first-child {
   padding-right: 3em;
 }
-div.dt-button-collection .dt-button-active.dt-button-split > *:first-child:after {
+div.dt-button-collection
+  .dt-button-active.dt-button-split
+  > *:first-child:after {
   position: absolute;
   top: 50%;
   margin-top: -10px;
@@ -208,7 +210,9 @@ div.dt-buttons.button-group.fixed > :last-child {
   max-height: 100vh;
   overflow: auto;
 }
-div.dt-buttons.button-group.two-column > :last-child, div.dt-buttons.button-group.three-column > :last-child, div.dt-buttons.button-group.four-column > :last-child {
+div.dt-buttons.button-group.two-column > :last-child,
+div.dt-buttons.button-group.three-column > :last-child,
+div.dt-buttons.button-group.four-column > :last-child {
   display: block !important;
   -webkit-column-gap: 8px;
   -moz-column-gap: 8px;
@@ -216,7 +220,9 @@ div.dt-buttons.button-group.two-column > :last-child, div.dt-buttons.button-grou
   -o-column-gap: 8px;
   column-gap: 8px;
 }
-div.dt-buttons.button-group.two-column > :last-child > *, div.dt-buttons.button-group.three-column > :last-child > *, div.dt-buttons.button-group.four-column > :last-child > * {
+div.dt-buttons.button-group.two-column > :last-child > *,
+div.dt-buttons.button-group.three-column > :last-child > *,
+div.dt-buttons.button-group.four-column > :last-child > * {
   -webkit-column-break-inside: avoid;
   break-inside: avoid;
 }
@@ -261,7 +267,9 @@ div.dt-buttons.button-group.columns > :last-child .dt-button {
   flex: 0 1;
   margin: 0;
 }
-div.dt-buttons.button-group.columns.dtb-b3 > :last-child, div.dt-buttons.button-group.columns.dtb-b2 > :last-child, div.dt-buttons.button-group.columns.dtb-b1 > :last-child {
+div.dt-buttons.button-group.columns.dtb-b3 > :last-child,
+div.dt-buttons.button-group.columns.dtb-b2 > :last-child,
+div.dt-buttons.button-group.columns.dtb-b1 > :last-child {
   justify-content: space-between;
 }
 div.dt-buttons.button-group.columns.dtb-b3 .dt-button {
@@ -315,23 +323,35 @@ div.dt-buttons.button-group div.dt-button-collection div.dt-button-split {
   align-content: flex-start;
   align-items: stretch;
 }
-div.dt-buttons.button-group div.dt-button-collection div.dt-button-split > *:first-child {
+div.dt-buttons.button-group
+  div.dt-button-collection
+  div.dt-button-split
+  > *:first-child {
   min-width: auto;
   flex: 1 0 50px;
   padding-right: 0;
 }
-div.dt-buttons.button-group div.dt-button-collection div.dt-button-split > *:last-child {
+div.dt-buttons.button-group
+  div.dt-button-collection
+  div.dt-button-split
+  > *:last-child {
   min-width: 33px;
   flex: 0;
   background: transparent;
   border: none;
   line-height: 1rem;
 }
-div.dt-buttons.button-group div.dt-button-collection div.dt-button-split > *:last-child:after {
+div.dt-buttons.button-group
+  div.dt-button-collection
+  div.dt-button-split
+  > *:last-child:after {
   border-top-color: #1779ba;
   margin-left: -10px;
 }
-div.dt-buttons.button-group div.dt-button-collection div.dt-button-split > *:last-child:hover {
+div.dt-buttons.button-group
+  div.dt-button-collection
+  div.dt-button-split
+  > *:last-child:hover {
   border-top-color: #0b6daf;
   margin-left: -10px;
 }

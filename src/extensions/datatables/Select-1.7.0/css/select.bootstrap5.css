@@ -6,7 +6,8 @@ table.dataTable > tbody > tr > td.select-checkbox,
 table.dataTable > tbody > tr > th.select-checkbox {
   position: relative;
 }
-table.dataTable > tbody > tr > td.select-checkbox:before, table.dataTable > tbody > tr > td.select-checkbox:after,
+table.dataTable > tbody > tr > td.select-checkbox:before,
+table.dataTable > tbody > tr > td.select-checkbox:after,
 table.dataTable > tbody > tr > th.select-checkbox:before,
 table.dataTable > tbody > tr > th.select-checkbox:after {
   display: block;
@@ -53,8 +54,16 @@ div.dataTables_wrapper span.select-item {
 
 html.dark table.dataTable > tbody > tr > td.select-checkbox:before,
 html.dark table.dataTable > tbody > tr > th.select-checkbox:before,
-html[data-bs-theme=dark] table.dataTable > tbody > tr > td.select-checkbox:before,
-html[data-bs-theme=dark] table.dataTable > tbody > tr > th.select-checkbox:before {
+html[data-bs-theme="dark"]
+  table.dataTable
+  > tbody
+  > tr
+  > td.select-checkbox:before,
+html[data-bs-theme="dark"]
+  table.dataTable
+  > tbody
+  > tr
+  > th.select-checkbox:before {
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
