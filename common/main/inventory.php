@@ -2,7 +2,7 @@
 	require_once '../php/dbh_inc.php';
 ?>
 
-<div class="flex w-full h-full relative z-0">
+<div class="flex w-full h-full relative bg-primary z-0">
 
 	<!-- loading animation -->
 
@@ -159,13 +159,6 @@
 			</svg>
 			<a href="#" class="capitalize text-base text-quatenary">category</a>
 		</div>
-
-		<div id="pack_tab" class="w-full flex items-center hover:bg-gray-200 rounded-lg py-2 px-3 cursor-pointer my-1">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="w-4 h-4 me-2 text-quatenary">
-				<path d="M50.7 58.5L0 160H208V32H93.7C75.5 32 58.9 42.3 50.7 58.5zM240 160H448L397.3 58.5C389.1 42.3 372.5 32 354.3 32H240V160zm208 32H0V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192z"/>
-			</svg>
-			<a href="#" class="capitalize text-base text-quatenary">packages</a>
-		</div>
 	</div>
 
 	<div class="h-full w-full py-2 px-3">
@@ -173,11 +166,10 @@
 		<table id="inv_tbl" class="w-full stripe display compact">
 			<thead class="">
 				<tr class="">
-					<th>Name</th>
-					<th>Type</th>
-					<th>Quantity</th>
-					<th>Status</th>
-					<th></th>
+					<th class="w-2/6">Name</th>
+					<th class="w-1/6">Type</th>
+					<th class="w-1/6">Quantity</th>
+					<th class="w-1/6"></th>
 				</tr>
 			</thead>
 
@@ -188,16 +180,16 @@
 					foreach ($query as $data) {
 				?>
 					<tr id="tr_<?php echo $data['inv_id'] ?>" class="group/row hover:bg-gray-200">
-						<td class=""><?php echo $data['inv_product']; ?> </td>
-						<td class=""><?php echo $data['ipt_type'] ?></td>
-						<td class=""><?php echo $data['inv_qty'] . ' ' . $data['ipt_metricAbbv'] ?></td>
 						<td class="">
-							<a href="#" id="note_btn" onclick="note_modal.showModal()" class="tooltip tooltip-bottom <?php if(empty($data['inv_note'])) {echo 'hidden';} ?>" data-tip="<?php echo $data['inv_note'] ?>" data-ref="<?php echo $data['inv_id'] ?>">
+							<?php echo $data['inv_product']; ?> 
+							<a href="#" id="note_btn" onclick="note_modal.showModal()" class="tooltip tooltip-bottom ms-4 <?php if(empty($data['inv_note'])) {echo 'hidden';} ?>" data-tip="<?php echo $data['inv_note'] ?>" data-ref="<?php echo $data['inv_id'] ?>">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" stroke="currentColor" class="w-4 h-4 text-quatenary">
 									<path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H288V368c0-26.5 21.5-48 48-48H448V96c0-35.3-28.7-64-64-64H64zM448 352H402.7 336c-8.8 0-16 7.2-16 16v66.7V480l32-32 64-64 32-32z"/>
 								</svg>
 							</a>
 						</td>
+						<td class=""><?php echo $data['ipt_type'] ?></td>
+						<td class=""><?php echo $data['inv_qty'] . ' ' . $data['ipt_metricAbbv'] ?></td>
 						<td>
 							<div class="flex items-center gap-4 invisible group-hover/row:visible">
 								
@@ -256,7 +248,6 @@
 
 			<tfoot>
 				<tr>
-					<th></th>
 					<th></th>
 					<th></th>
 					<th></th>

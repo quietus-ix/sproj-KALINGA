@@ -11,3 +11,15 @@
 input {
   background-color: transparent;
 }
+
+.dt-button {
+  background-color: #393E46 !important;
+  color: #F2F2F2 !important;
+  border-radius: 0.375rem;
+}
+
+tr.group,
+tr.group:hover {
+    background-color: #393E46 !important;
+    color: #F2F2F2 !important;
+}
