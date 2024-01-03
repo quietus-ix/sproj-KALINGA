@@ -1,4 +1,4 @@
-export function loadTableContent(target, src, table, column, colSel) {
+function loadTableContent(target, src, table, column, colSel) {
    // colToGrp
    $.ajax({
       url: src,
@@ -15,7 +15,7 @@ export function loadTableContent(target, src, table, column, colSel) {
                {
                   extend: "pdfHtml5",
                   download: "open",
-                  exportOptions: {
+                  ptions: {
                      columns: colSel,
                   },
                   pageSize: "LEGAL",
@@ -59,7 +59,7 @@ export function loadTableContent(target, src, table, column, colSel) {
    });
 }
 
-export function loadContent(target, src) {
+function loadContent(target, src) {
    $.ajax({
       url: src,
       method: "GET",
@@ -69,7 +69,13 @@ export function loadContent(target, src) {
    });
 }
 
-export function loadTablePlainContent(target, src, table) {
+// function to add row that the row adds
+function addRow() {
+   let cloned = $("#bundleTable tr:last").clone();
+   cloned.clone().appendTo("#bundleTable");
+}
+
+function loadTablePlainContent(target, src, table) {
    $.ajax({
       url: src,
       method: "GET",
@@ -81,6 +87,7 @@ export function loadTablePlainContent(target, src, table) {
             ordering: false,
             paging: false,
             searching: false,
+            retrieve: true,
          });
       },
    });
@@ -112,7 +119,7 @@ $(document).ready(() => {
       $(".tabs div").removeClass("active-nav");
       $("#nav_bundleMaker").addClass("active-nav");
 
-      loadTableContent("main", "bundleMaker.php", "#inv_tbl", [1]);
+      loadTablePlainContent("main", "bundleMaker.php", "#bundleDisplay_tbl");
    });
    $("#nav_settings").click(() => {
       $(".tabs div").removeClass("active-nav");

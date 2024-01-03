@@ -22,6 +22,7 @@ $_SESSION['activated'] = false;
      <link rel="stylesheet" href="../../src/extensions/output.css">
      <link rel="stylesheet" href="../../src/extensions/anim.css">
      <link rel="stylesheet" href="../../src/assets/fonts/fonts.css">
+     <link rel="stylesheet" href="../../src/extensions/icons/bootstrap-icons.css">
      <link rel="stylesheet" href="./index.css">
 
      <!-- <script src="../../node_modules/alpinejs/dist/cdn.js" defer></script> -->
@@ -33,11 +34,11 @@ $_SESSION['activated'] = false;
      <!-- <script src="../../node_modules/echarts/dist/echarts.js"></script> -->
      <script src="../../src/extensions/echarts.js"></script>
 
-     <script src="index.js" type="module"></script>
-     <script src="./dashboard.js" type="module"></script>
-     <script src="./inventory.js" type="module"></script>
-     <script src="./category.js" type="module"></script>
-     <script src="./bundleMaker.js" type="module"></script>
+     <script src="index.js"></script>
+     <script src="./dashboard.js"></script>
+     <script src="./inventory.js"></script>
+     <script src="./category.js"></script>
+     <script src="./bundleMaker.js"></script>
 
      <script src="../../src/extensions/jszip.min.js"></script>
      <script src="../../src/extensions/pdfmake.min.js"></script>

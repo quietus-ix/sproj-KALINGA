@@ -1,7 +1,7 @@
 <?php
 require_once '../php/dbh_inc.php';
 
-$itemSel = $conn->query("SELECT inv_product FROM tb_inventory");
+$itemSel = $conn->query("SELECT inv_id, inv_product FROM tb_inventory");
 ?>
 
 <form method="post" id="create_bundle" class="flex gap-5 p-5 justify-center bg-primaryfd w-full h-full overflow-y-auto relative">
@@ -31,17 +31,21 @@ $itemSel = $conn->query("SELECT inv_product FROM tb_inventory");
             <tr>
                <th class="w-3/4"></th>
                <th class="1/4"></th>
+               <th></th>
             </tr>
          </thead>
          <tbody>
             <tr>
                <td>
                   <select name="bundle_item_name[]" class="block w-full border-b-2 border-gray-400 bg-transparent px-5 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none">
-                     <option disabled selected> Item select </option> <?php while ($item = $itemSel->fetch_column()) { ?> <option> <?php echo $item ?> </option> <?php } ?>
+                     <option disabled selected> Item select </option> <?php while ($item = $itemSel->fetch_assoc()) { ?> <option value="<?php echo $item['inv_id'] ?>"> <?php echo $item['inv_product'] ?> </option> <?php } ?>
                   </select>
                </td>
                <td>
                   <input name="bundle_item_qty[]" type="number" class="block w-full placeholder-gray-400/70 border-b-2 border-gray-400 bg-transparent px-2 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none" placeholder="Quantity" />
+               </td>
+               <td>
+                  <button type="button" class="delItem btn bg-err text-primary"><i class="bi bi-x-square"></i></button>
                </td>
             </tr>
          </tbody>
@@ -54,31 +58,5 @@ $itemSel = $conn->query("SELECT inv_product FROM tb_inventory");
 </form>
 
 <script>
-   // function addNewRow() {
-   //    table.row
-   //       .add([
-   //          'item ' + counter,
-   //          '<select class="block w-full border-b-2 border-gray-400 bg-transparent px-5 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none"><option disabled selected > Item select </option> <?php //while ($item = $itemSel->fetch_column()) { 
-                                                                                                                                                                                                                  ?> <option> <?php //echo $item 
-                                                                                                                                                                                                                              ?> </option> <?php //} 
-                                                                                                                                                                                                                                             ?>',
-   //          '<input name="bundle_name" type="number" class="block w-full placeholder-gray-400/70 border-b-2 border-gray-400 bg-transparent px-2 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none" placeholder="Quantity"/>'
-   //       ])
-   //       .draw(false);
 
-   //    counter++;
-   // }
-   // new DataTable('#bundleTable', {
-   //    info: false,
-   //    ordering: false,
-   //    paging: false,
-   //    searching: false
-   // });
-
-   // // document.querySelector('#addItem').addEventListener('click', addNewRow);
-   let cloned = $("#bundleTable tr:last").clone();
-   $("#addItem").click(function(e) {
-      e.preventDefault();
-      cloned.clone().appendTo("#bundleTable");
-   });
 </script>

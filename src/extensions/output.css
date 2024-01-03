@@ -795,6 +795,12 @@ html {
     --tw-bg-opacity: 1;
     background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
   }
+
+  .table-zebra tr.hover:hover,
+  .table-zebra tr.hover:nth-child(even):hover {
+    --tw-bg-opacity: 1;
+    background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+  }
 }
 
 .btn {
@@ -1312,6 +1318,11 @@ html {
   right: 0px;
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+}
+
+.table-zebra tbody tr:nth-child(even) :where(.table-pin-cols tr th) {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
 }
 
 .textarea {
@@ -1963,6 +1974,13 @@ html {
   background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
 }
 
+.table-zebra tr.active,
+    .table-zebra tr.active:nth-child(even),
+    .table-zebra-zebra tbody tr:nth-child(even) {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+}
+
 .table :where(thead, tbody) :where(tr:not(:last-child)),
     .table :where(thead, tbody) :where(tr:first-child:last-child) {
   border-bottom-width: 1px;
@@ -2345,8 +2363,8 @@ html {
   right: -100%;
 }
 
-.bottom-10 {
-  bottom: 2.5rem;
+.bottom-6 {
+  bottom: 1.5rem;
 }
 
 .left-0 {
@@ -2387,10 +2405,6 @@ html {
 
 .top-4 {
   top: 1rem;
-}
-
-.bottom-6 {
-  bottom: 1.5rem;
 }
 
 .z-0 {
@@ -2638,6 +2652,10 @@ html {
   height: 100svh;
 }
 
+.max-h-56 {
+  max-height: 14rem;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -2648,6 +2666,10 @@ html {
 
 .w-1\/6 {
   width: 16.666667%;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-11 {
@@ -2680,6 +2702,10 @@ html {
 
 .w-3\/4 {
   width: 75%;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .w-4 {
@@ -2742,6 +2768,14 @@ html {
   width: 300%;
 }
 
+.w-\[5\%\] {
+  width: 5%;
+}
+
+.w-\[50\%\] {
+  width: 50%;
+}
+
 .w-\[6\%\] {
   width: 6%;
 }
@@ -2765,10 +2799,6 @@ html {
 
 .w-svw {
   width: 100svw;
-}
-
-.w-32 {
-  width: 8rem;
 }
 
 .max-w-full {
@@ -2891,6 +2921,10 @@ html {
   border-radius: 0.375rem;
 }
 
+.rounded-none {
+  border-radius: 0px;
+}
+
 .border {
   border-width: 1px;
 }
@@ -2970,6 +3004,11 @@ html {
 .bg-emerald-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(16 185 129 / var(--tw-bg-opacity));
+}
+
+.bg-err {
+  --tw-bg-opacity: 1;
+  background-color: rgb(176 0 32 / var(--tw-bg-opacity));
 }
 
 .bg-gray-200 {
@@ -3186,6 +3225,10 @@ html {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.font-black {
+  font-weight: 900;
 }
 
 .font-bold {

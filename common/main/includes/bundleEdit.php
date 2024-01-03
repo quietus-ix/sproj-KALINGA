@@ -2,6 +2,8 @@
 require_once '../../php/dbh_inc.php';
 $encode;
 
+$bundle_id_new = $_POST['bundleID'];
+
 if (!empty($_POST['bundle_name']) && !empty($_POST['bundle_item_name']) && !empty($_POST['bundle_item_qty'])) {
    $bundle_name = $_POST['bundle_name'];
 
@@ -15,7 +17,7 @@ if (!empty($_POST['bundle_name']) && !empty($_POST['bundle_item_name']) && !empt
          $bundle_item_name = $value;
          $bundle_item_qty = $_POST['bundle_item_qty'][$key];
          if (empty($bundle_item_name) || empty($bundle_item_qty)) {
-            $query = $conn->multi_query("DELETE FROM tb_bundles WHERE bnd_id = '$bundle_id'");
+            $query = $conn->query("DELETE FROM tb_bundles WHERE bnd_id = '$bundle_id'");
             $querytwo = $conn->query("DELETE FROM tb_bundleitems WHERE bundle_id = '$bundle_id'");
             if ($query && $querytwo) {
                $encode = array(
@@ -43,12 +45,14 @@ if (!empty($_POST['bundle_name']) && !empty($_POST['bundle_item_name']) && !empt
                }
             } else {
                $query = $conn->query("INSERT INTO tb_bundleitems (bundle_id, item_id, qty) VALUES ('$bundle_id', '$bundle_item_name', '$bundle_item_qty')");
-
-               if ($query) {
+               $querythree = $conn->query("DELETE FROM tb_bundles WHERE bnd_id = '$bundle_id_new'");
+               $querytwo = $conn->query("DELETE FROM tb_bundleitems WHERE bundle_id = '$bundle_id_new'");
+               if ($query && $querytwo && $$querythree) {
                   $encode = array(
                      "code" => 2,
-                     "msg" => "Bundle successfully created"
+                     "msg" => "Bundle successfully edited"
                   );
+                  echo json_encode($encode);
                }
             }
          }
@@ -59,6 +63,5 @@ if (!empty($_POST['bundle_name']) && !empty($_POST['bundle_item_name']) && !empt
       "code" => 1,
       "msg" => "All fields cannot be empty"
    );
+   echo json_encode($encode);
 }
-
-echo json_encode($encode);

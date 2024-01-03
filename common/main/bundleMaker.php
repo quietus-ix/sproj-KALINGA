@@ -8,10 +8,49 @@ $query->store_result();
 
 $itemSel = $conn->query("SELECT inv_product FROM tb_inventory");
 
+$bundles = $conn->query("SELECT bnd_id, bnd_name FROM tb_bundles");
+
 if ($query->num_rows() > 0) {
 ?>
-	<div class="flex w-full h-full relative z-0">
-		here
+	<div class="flex w-full h-full relative z-0 p-5">
+		<div class="bg-primary flex flex-col shadow-lg p-3 w-full rounded-lg">
+			<div class="flex gap-5 items-center">
+				<h1 class="text-2xl text-quatenary font-bold">Bundles</h1>
+				<button type="button" id="createBundle" class="btn py-1 px-2"><i class="bi bi-plus-square text-2xl"></i></button>
+			</div>
+			<table id="bundleDisplay_tbl" class="rounded-none table table-zebra max-h-56">
+				<thead>
+					<tr>
+						<th class="w-[5%]">#</th>
+						<th class="w-[50%]">Bundle Name</th>
+						<th class="w-35%">Items in the bundle</th>
+						<th class="w-10%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$counter = 1;
+					while ($data = $bundles->fetch_assoc()) {
+					?>
+						<tr class="py-3">
+							<td><?php echo $counter ?></td>
+							<td class="font-black"><?php echo $data['bnd_name'] ?></td>
+							<td>
+								<?php
+								$idOfBundle = $data['bnd_id'];
+								$count = $conn->query("SELECT COUNT(item_id) FROM tb_bundleitems WHERE bundle_id = '$idOfBundle'")->fetch_column();
+								echo $count;
+								?>
+							</td>
+							<td>
+								<button type="button" class="editBundle_btn btn btn-neurtral" id="<?php echo $data['bnd_id'] ?>"><i class="bi bi-pencil-square"></i></button>
+							</td>
+						</tr>
+					<?php $counter++;
+					} ?>
+				</tbody>
+			</table>
+		</div>
 	</div>
 <?php
 } else {
