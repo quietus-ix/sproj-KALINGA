@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 19, 2023 at 06:23 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Jan 03, 2024 at 10:43 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,42 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_kalinga`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_actionhistory`
+--
+
+CREATE TABLE `tb_actionhistory` (
+  `ah_id` int(11) NOT NULL,
+  `ah_content` text NOT NULL COMMENT 'content text of this notification',
+  `ah_refID` int(11) NOT NULL COMMENT 'the content ID which the notification will refer',
+  `ah_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'time when the notification is generated'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_bundleitems`
+--
+
+CREATE TABLE `tb_bundleitems` (
+  `bundle_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_bundles`
+--
+
+CREATE TABLE `tb_bundles` (
+  `bnd_id` int(11) NOT NULL,
+  `bnd_name` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -51,38 +87,6 @@ CREATE TABLE `tb_inventory` (
   `inv_dateModified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tb_inventory`
---
-
-INSERT INTO `tb_inventory` (`inv_id`, `inv_product`, `inv_prtype`, `inv_note`, `inv_denom`, `inv_deduc`, `inv_qty`, `inv_dateAdded`, `inv_dateModified`) VALUES
-(29, 'ALCOHOL', 'PT529', '', 5, -1, 4, '2023-12-11', '2023-12-11');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_notification`
---
-
-CREATE TABLE `tb_notification` (
-  `ntf_id` int(11) NOT NULL,
-  `ntf_content` text NOT NULL COMMENT 'content text of this notification',
-  `ntf_refID` int(11) NOT NULL COMMENT 'the content ID which the notification will refer',
-  `ntf_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'time when the notification is generated'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_packages`
---
-
-CREATE TABLE `tb_packages` (
-  `pck_id` varchar(11) NOT NULL,
-  `pck_name` varchar(120) NOT NULL,
-  `pck_items` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 -- --------------------------------------------------------
 
 --
@@ -101,8 +105,7 @@ CREATE TABLE `tb_prtype` (
 --
 
 INSERT INTO `tb_prtype` (`ipt_id`, `ipt_type`, `ipt_metric`, `ipt_metricAbbv`) VALUES
-('null', 'unset', NULL, NULL),
-('PT529', 'hygiene', 'pieces', 'pcs');
+('null', 'unset', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -148,16 +151,20 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tb_user`
---
-
-INSERT INTO `tb_user` (`usr_id`, `usr_type`, `usr_username`, `usr_password`, `usr_fname`, `usr_lname`, `usr_email`, `usr_contactNum`, `usr_dateCreated`) VALUES
-(17, 0, 'user2', '$2y$10$yEGoqqNpLkT/oy5eWEgZae47qc0wvpLTAwpnLVjC.4sSabm7xfLIO', 'aa', 'aa', 'a@gmail.com', '', '2023-11-06 02:54:02'),
-(23, 1, 'user3', '$2y$10$zgTLLyWvUusUXDkWO67tyO/YocE6cfXlTkpBJV9WC.5SNGMdhYcgS', 'ww', 'ww', 'a@a.com', '', '2023-12-19 18:14:28');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tb_actionhistory`
+--
+ALTER TABLE `tb_actionhistory`
+  ADD PRIMARY KEY (`ah_id`);
+
+--
+-- Indexes for table `tb_bundles`
+--
+ALTER TABLE `tb_bundles`
+  ADD PRIMARY KEY (`bnd_id`) USING BTREE;
 
 --
 -- Indexes for table `tb_contributors`
@@ -171,18 +178,6 @@ ALTER TABLE `tb_contributors`
 ALTER TABLE `tb_inventory`
   ADD PRIMARY KEY (`inv_id`),
   ADD KEY `FK_product_type` (`inv_prtype`);
-
---
--- Indexes for table `tb_notification`
---
-ALTER TABLE `tb_notification`
-  ADD PRIMARY KEY (`ntf_id`);
-
---
--- Indexes for table `tb_packages`
---
-ALTER TABLE `tb_packages`
-  ADD PRIMARY KEY (`pck_id`);
 
 --
 -- Indexes for table `tb_prtype`
@@ -213,6 +208,18 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_actionhistory`
+--
+ALTER TABLE `tb_actionhistory`
+  MODIFY `ah_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_bundles`
+--
+ALTER TABLE `tb_bundles`
+  MODIFY `bnd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tb_contributors`
 --
 ALTER TABLE `tb_contributors`
@@ -222,13 +229,7 @@ ALTER TABLE `tb_contributors`
 -- AUTO_INCREMENT for table `tb_inventory`
 --
 ALTER TABLE `tb_inventory`
-  MODIFY `inv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `tb_notification`
---
-ALTER TABLE `tb_notification`
-  MODIFY `ntf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `inv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_reports`
@@ -246,7 +247,7 @@ ALTER TABLE `tb_residents`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
