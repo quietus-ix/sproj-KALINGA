@@ -97,7 +97,7 @@ $_SESSION['activated'] = false;
                               <hr class="border-gray-300">
 
                               <!-- TODO: view profile with capability to edit profile settings, including authentication -->
-                              <a href="#" class="flex items-center px-4 py-3 text-base text-quatenary capitalize transition-colors duration-300 transform hover:bg-gray-200">
+                              <!-- <a href="#" class="flex items-center px-4 py-3 text-base text-quatenary capitalize transition-colors duration-300 transform hover:bg-gray-200">
                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-quatenary me-3" viewBox="0 0 576 512">
                                         <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
                                    </svg>
@@ -109,7 +109,7 @@ $_SESSION['activated'] = false;
                                         <path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
                                    </svg>
                                    toggle dark mode
-                              </a>
+                              </a> -->
 
                               <hr class="border-gray-300">
 
@@ -151,7 +151,7 @@ $_SESSION['activated'] = false;
                     </div>
 
                     <!-- tabs on the lowest side -->
-                    <div class="flex flex-col w-full items-center">
+                    <!-- <div class="flex flex-col w-full items-center">
 
                          <div id="nav_settings" class="w-full flex relative py-4 cursor-pointer hover:bg-primaryfd">
                               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" class="w-7 h-7 ms-7">
@@ -167,7 +167,7 @@ $_SESSION['activated'] = false;
                               <a class="nav-label absolute left-[30%] hidden text-xl">FAQ</a>
                          </div>
 
-                    </div>
+                    </div> -->
                </nav>
 
                <main class="h-[90%] md:h-full w-full bg-primaryfd">

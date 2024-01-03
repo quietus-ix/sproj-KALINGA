@@ -42,7 +42,7 @@ $itemSel = $conn->query("SELECT inv_id, inv_product FROM tb_inventory");
                   </select>
                </td>
                <td>
-                  <input name="bundle_item_qty[]" type="number" class="block w-full placeholder-gray-400/70 border-b-2 border-gray-400 bg-transparent px-2 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none" placeholder="Quantity" />
+                  <input name="bundle_item_qty[]" type="number" min="1" class="block w-full placeholder-gray-400/70 border-b-2 border-gray-400 bg-transparent px-2 py-2.5 text-quatenary focus:border-b-secondary focus:outline-none" placeholder="Quantity" />
                </td>
                <td>
                   <button type="button" class="delItem btn bg-err text-primary"><i class="bi bi-x-square"></i></button>
