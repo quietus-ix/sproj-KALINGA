@@ -310,6 +310,8 @@ $(document).ready(() => {
       success: function (e) {
         $("main #changeAll_name").val(e.name);
         $("main #changeAll_category").val(e.cat);
+        $("main #metric_name").text(e.met);
+        $("main #metric_abbv").text(e.metAbv);
         $("main #changeAll_qty").val(e.qty);
         $("main #changeAll_note").val(e.note);
       },
